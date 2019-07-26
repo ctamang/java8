@@ -96,7 +96,9 @@ OUTPUT QUESTIONS
 	d) Compilation error
 	
 	Ans. (d)
-	Explanation: For method overloading, methods must have different signatures. Return type of methods does not contribute towards different method signature, so the code above give compilation error. Both getdata 1 and getdata 2 only differ in return types and NOT signatures.
+	Explanation: For method overloading, methods must have different signatures. Return type of methods does not contribute towards 
+	different method signature, so the code above give compilation error. Both getdata 1 and getdata 2 only differ in return types 
+	and NOT signatures.
 	 
 2) What is the output of the following program?
 	public class Test 
@@ -146,7 +148,8 @@ OUTPUT QUESTIONS
 	d) None of these
 	
 	Ans. (c)
-	Explanation: Access modifiers associated with methods doesn’t determine the criteria for overloading. The overloaded methods could also be declared as final or static without affecting the overloading criteria.
+	Explanation: Access modifiers associated with methods doesn’t determine the criteria for overloading. The overloaded methods 
+	could also be declared as final or static without affecting the overloading criteria.
 
 4) What is the output of the following program?
 	public class Test 

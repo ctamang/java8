@@ -162,7 +162,6 @@ import java.sql.SQLException;
  */ 
 public class Overriding1 {
 	public static void main(String [] args) throws IOException {
-
 	}
 }
 
@@ -175,9 +174,9 @@ class Parent{
 }
  
 class Child extends Parent{
-    public String testMethod() throws NullPointerException
-    {
-        System.out.println("Child");
-        return "";
-    }
+	 private String testMethod() throws IOException
+	    {
+	        System.out.println("Parent");
+	        return "";
+	    }
 }

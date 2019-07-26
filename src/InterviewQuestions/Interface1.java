@@ -87,7 +87,8 @@ Java 8 introduced two new methods in interface they are
 	One of the major reason to introduce this default methods in java 8 is to support lambda expressions in collections API and 
 	to enhance.
 	We can all these default methods by using interface name and also by using object of the class which is implementing
-
+	https://stackoverflow.com/questions/55780860/how-do-java-8-default-methods-hеlp-with-lambdas
+	
 Can we override java 8 default method
 	As we discussed above default methods in interfaces are implemented methods with bodies
 	Yes we can override same method in class which is implementing this interface.
