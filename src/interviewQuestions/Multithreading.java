@@ -1,4 +1,4 @@
-package InterviewQuestions;
+package interviewQuestions;
 
 /*
 1.	which is better extending thread class or implementing runnable interface ?

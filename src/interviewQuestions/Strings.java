@@ -1,4 +1,4 @@
-package InterviewQuestions;
+package interviewQuestions;
 
 /*
 Q1. What is the difference between “==” and “equals(…)” in comparing Java String objects?

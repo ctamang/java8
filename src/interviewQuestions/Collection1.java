@@ -1,4 +1,4 @@
-package InterviewQuestions;
+package interviewQuestions;
 /*
  Links : 
  	https://www.javatpoint.com/java-collections-interview-questions

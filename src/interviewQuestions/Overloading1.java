@@ -1,4 +1,4 @@
-package InterviewQuestions;
+package interviewQuestions;
 
 /* 1. we can have a method name with the same name as the class name. we can overload it like that.
 

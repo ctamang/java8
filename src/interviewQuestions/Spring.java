@@ -1,12 +1,12 @@
-package InterviewQuestions;
+package interviewQuestions;
 
 
 /*
  * 
 1. What is bean factory?
  	The BeanFactory is the actual container which instantiates, configures, and manages a number of beans. These beans typically 
- 	collaborate with one another, and thus have dependencies between themselves. These dependencies are reflected in the configuration 
- 	data used by the BeanFactory.
+ 	collaborate with one another, and thus have dependencies between themselves. These dependencies are reflected in the 
+ 	configuration data used by the BeanFactory.
  	
  	How to Create XmlBeanFactory
 		Resource resource = new FileSystemResource("beans.xml");
@@ -346,9 +346,165 @@ Read more: https://javarevisited.blogspot.com/2012/11/difference-between-beanfac
 			It also added more Spring specific annotations e.g. @Primary, @Lazy, and @DependsOn annotation
 
 32. difference b/w @controller and @restcontroller?	
+
+	1. The @Controller is a common annotation which is used to mark a class as Spring MVC Controller while @RestController is 
+		a special controller used in RESTFul web services and the equivalent of @Controller + @ResponseBody.
+	2. The @RestController is relatively new, added only on Spring 4.0 but @Controller is an old annotation, exists since 
+		Spring started supporting annotation, officially it was added on Spring 2.5 version.
+	3. The @Controller annotation indicates that the class is a "Controller" like a web controller while @RestController 
+		annotation indicates that the class is a controller where @RequestMapping methods assume @ResponseBody semantics by 
+		default i.e. servicing REST API.
+	4. The @Controller is a specialization of @Component annotation while @RestController is a specialization of @Controller 
+		annotation. It is actually a convenience controller annotated with @Controller and @ResponseBody as shown below.
+
+			@Target(value=TYPE)
+			@Retention(value=RUNTIME)
+			@Documented
+			@Controller
+			@ResponseBody
+			public @interface RestController
+			
+		and here is how the declaration of @Controller looks like:
+			
+			@Target(value=TYPE)
+			@Retention(value=RUNTIME)
+			@Documented
+			@Component
+			public @interface Controller
+	5. Another key difference between @RestController and @Controller is that you don't need to use @ResponseBody on every
+	 	handler method once you annotate the class with @RestController as shown below:
+			
+		with @RestControler
+			
+			@RestController
+			public class Book{
+			
+			@RequestMapping(value={"/book"})
+			public Book getBook(){
+			//...
+			return book;
+			}
+			}
+			
+		without @RestController
+			
+			@Controller
+			public class Book{
+			
+			@RequestMapping(value={"/book"})
+			@ResponseBody
+			public Book getBook(){
+			//...
+			return book;
+			}
+			}
+33. What is the use of @Qualifier annotation?
+	There may be a situation when you create more than one bean of the same type and want to wire only one of them with a 
+	property. In such cases, you can use the @Qualifier annotation along with @Autowired to remove the confusion by specifying 
+	which exact bean will be wired. Following is an example to show the use of @Qualifier annotation
+	You can use @Qualifier along with @Autowired. In fact spring will ask you explicitly select the bean if ambiguous bean 
+	type are found, in which case you should provide the qualifier
+	For Example in following case it is necessary provide a qualifier
+	
+		@Component
+		@Qualifier("staff") 
+		public Staff implements Person {}
+		
+		@Component
+		@Qualifier("employee") 
+		public Manager implements Person {}
+		
+		@Component
+		public Payroll {
+		    private Person person;
+		
+		    @Autowired
+		    public Payroll(@Qualifier("employee") Person person){
+		          this.person = person;
+		    }
+		}
+
+
+35.What is DispatcherServlet?
+	DispatcherServlet acts as front controller for Spring based web applications. It provides a mechanism for request 
+	processing where actual work is performed by configurable, delegate components. It is inherited from 
+	javax.servlet.http.HttpServlet, it is typically configured in the web.xml file.
+	A web application can define any number of DispatcherServlet instances. Each servlet will operate in its own namespace, 
+	loading its own application context with mappings, handlers, etc. Only the root application context as loaded by 
+	ContextLoaderListener, if any, will be shared. In most cases, applications have only single DispatcherServlet with the 
+	context-root URL(/), that is, all requests coming to that domain will be handled by it.
+	DispatcherServlet uses Spring configuration classes to discover the delegate components it needs for request mapping, view
+	resolution, exception handling etc
+
+36. Can a web application define the multiple instances of DispatcherServlet?
+	A web application can define any number of DispatcherServlets. Each servlet will operate in its own namespace, loading its
+	own application context with mappings, handlers, etc. Only the root application context as loaded by 
+	ContextLoaderListener, if any, will be shared.
+	So as long as you map the two Servlets to two different URL patterns, you are all good.
+
+37. How can we call stored procedure from Spring?
+	We can use one of the query() method from JdbcTemplate to call stored procedures, or we can extend abstract class 
+	StoredProcedure to call stored procedures from Java. In this Java Spring tutorial, we will see second approach to call 
+	stored procedure. It's more object oriented, but same time requires more coding. StoredProcedure class allows you to 
+	declare IN and OUT parameters and call stored procedure using its various execute() method, which has protected access and 
+	can only be called from sub class. I personally prefer to implement StoredProcedure class as Inner class, if its tied up 
+	with one of DAO Object.
+
+39. What kind of exceptions can be propagated using exception?
+	only unchecked, compiler error happens in case of checked exception propagation.
+	
+	 class TestExceptionPropagation2{  
+	  void m(){  
+	    throw new java.io.IOException("device error");//checked exception  
+	  }  
+	  void n(){  
+	    m();  
+	  }  
+	  void p(){  
+	   try{  
+	    n();  
+	   }catch(Exception e){System.out.println("exception handeled");}  
+	  }  
+	  public static void main(String args[]){  
+	   TestExceptionPropagation2 obj=new TestExceptionPropagation2();  
+	   obj.p();  
+	   System.out.println("normal flow");  
+	  }  
+	}  
+	Output:Compile Time Error
  
+38. What kind of exceptions can be declared using throws keyword?
+	only checked exceptions. because :
+		unchecked Exception: under your control so correct your code.
+		error: beyond your control e.g. you are unable to do anything if there occurs VirtualMachineError or StackOverflowError.
+	Advantage of Java throws keyword
+		Now Checked Exception can be propagated (forwarded in call stack).
+		It provides information to the caller of the method about the exception.
+	
+	Let's see the example of java throws clause which describes that checked exceptions can be propagated by throws keyword.
+	import java.io.IOException;  
+	class Testthrows1{  
+	  void m()throws IOException{  
+	    throw new IOException("device error");//checked exception  
+	  }  
+	  void n()throws IOException{  
+	    m();  
+	  }  
+	  void p(){  
+	   try{  
+	    n();  
+	   }catch(Exception e){System.out.println("exception handled");}  
+	  }  
+	  public static void main(String args[]){  
+	   Testthrows1 obj=new Testthrows1();  
+	   obj.p();  
+	   System.out.println("normal flow...");  
+	  }  
+	}  
  * 
  */
 public class Spring {
+	
+	final Customer c = new Customer("name");
 
 }
