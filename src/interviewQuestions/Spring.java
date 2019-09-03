@@ -450,57 +450,6 @@ Read more: https://javarevisited.blogspot.com/2012/11/difference-between-beanfac
 	can only be called from sub class. I personally prefer to implement StoredProcedure class as Inner class, if its tied up 
 	with one of DAO Object.
 
-39. What kind of exceptions can be propagated using exception?
-	only unchecked, compiler error happens in case of checked exception propagation.
-	
-	 class TestExceptionPropagation2{  
-	  void m(){  
-	    throw new java.io.IOException("device error");//checked exception  
-	  }  
-	  void n(){  
-	    m();  
-	  }  
-	  void p(){  
-	   try{  
-	    n();  
-	   }catch(Exception e){System.out.println("exception handeled");}  
-	  }  
-	  public static void main(String args[]){  
-	   TestExceptionPropagation2 obj=new TestExceptionPropagation2();  
-	   obj.p();  
-	   System.out.println("normal flow");  
-	  }  
-	}  
-	Output:Compile Time Error
- 
-38. What kind of exceptions can be declared using throws keyword?
-	only checked exceptions. because :
-		unchecked Exception: under your control so correct your code.
-		error: beyond your control e.g. you are unable to do anything if there occurs VirtualMachineError or StackOverflowError.
-	Advantage of Java throws keyword
-		Now Checked Exception can be propagated (forwarded in call stack).
-		It provides information to the caller of the method about the exception.
-	
-	Let's see the example of java throws clause which describes that checked exceptions can be propagated by throws keyword.
-	import java.io.IOException;  
-	class Testthrows1{  
-	  void m()throws IOException{  
-	    throw new IOException("device error");//checked exception  
-	  }  
-	  void n()throws IOException{  
-	    m();  
-	  }  
-	  void p(){  
-	   try{  
-	    n();  
-	   }catch(Exception e){System.out.println("exception handled");}  
-	  }  
-	  public static void main(String args[]){  
-	   Testthrows1 obj=new Testthrows1();  
-	   obj.p();  
-	   System.out.println("normal flow...");  
-	  }  
-	}  
  * 
  */
 public class Spring {

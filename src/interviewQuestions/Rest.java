@@ -3,15 +3,19 @@ package interviewQuestions;
 /*
 
 What does REST stand for? (answer)
-	REST stands for REpresentational State Transfer, which uses HTTP protocol to send data from client to server e.g. a book in the server can be delivered to the client using JSON or XML.
+	REST stands for REpresentational State Transfer, which uses HTTP protocol to send data from client to server e.g. a book in 
+	the server can be delivered to the client using JSON or XML.
 
 
 What is a resource? (answer)
-	A resource is how data is represented in REST architecture. By exposing entities as the resource it allows a client to read, write, modify, and create resources using HTTP methods e.g. GET, POST, PUT, DELETE etc.
+	A resource is how data is represented in REST architecture. By exposing entities as the resource it allows a client to read,
+	write, modify, and create resources using HTTP methods e.g. GET, POST, PUT, DELETE etc.
 
 
 What are safe REST operations? (answer)
-	REST API uses HTTP methods to perform operations. Some of the HTTP operations which doesn't modify the resource at the server is known as safe operations e.g. GET and HEAD. On the other hand, PUT, POST, and DELETE are unsafe because they modify the resource on the server.
+	REST API uses HTTP methods to perform operations. Some of the HTTP operations which doesn't modify the resource at the 
+	server is known as safe operations e.g. GET and HEAD. On the other hand, PUT, POST, and DELETE are unsafe because they 
+	modify the resource on the server.
 
 
 What are idempotent operations? Why is idempotency important? (answer)
@@ -31,7 +35,8 @@ What are idempotent operations? Why is idempotency important? (answer)
 	GET, PUT, DELETE, HEAD, OPTIONS and TRACE are idempotent.
 	Let’s analyze how above HTTP methods end up being idempotent – any why POST is not.
 	HTTP POST
-		Generally – not necessarily – POST APIs are used to create a new resource on server. So when you invoke the same POST request N times, you will have N new resources on the server. So, POST is not idempotent.
+		Generally – not necessarily – POST APIs are used to create a new resource on server. So when you invoke the same POST 
+		request N times, you will have N new resources on the server. So, POST is not idempotent.
 
 What are the advantages of the RestTemplate? (answer)
 	The RestTemplate class is an implementation of Template method pattern in Spring framework. Similar to other popular
@@ -205,7 +210,8 @@ When do you need @ResponseBody annotation in Spring MVC? (answer)
 	   return "Hello World";
 	}
 	
-	Alternatively, you can also use @RestController annotation instead of @Controller annotation. This will remove the need for using @ResponseBody because as discussed in the previous answer, it comes automatically with @RestController annotation
+	Alternatively, you can also use @RestController annotation instead of @Controller annotation. This will remove the need for
+	using @ResponseBody because as discussed in the previous answer, it comes automatically with @RestController annotation
 
 Difference between @PathVariable and @RequestParam in Spring
 	Now that we understand both the difference as well as how to use both @RequestParam and @PathVariable in Spring MVC 
@@ -219,6 +225,31 @@ Difference between @PathVariable and @RequestParam in Spring
 		attribute, provided the required attribute is false.
 	4) Spring MVC allows you to use multiple @PathVariable annotations in the same method, provided, no more than one argument 
 		has the same pattern.
+		
+		@RequestMapping(value="/book/{ISBN}", method= RequestMethod.GET)
+		public String showBookDetails(@PathVariable("ISBN") String id,
+		                              Model model){
+		   model.addAttribute("ISBN", id);
+		   return "bookDetails";
+		}
+		
+		
+		URL: http://localhost:8080/eportal/trades?tradeId=2001
+
+		@RequestMapping("/trades")
+		public String showTradeDetails(@RequestParam String tradeId,
+		                               Model model){
+		  model.addAttribute("tradeId", tradeId);
+		  return "tradeDetails";
+		}
+
+		Example : 
+			@RequestMapping(value="/order/{orderId}/receipts", method = RequestMethod.GET)
+			public List listUsersInvoices(@PathVariable("orderId") int order,
+			 @RequestParam(value = "date", required = false) Date dateOrNull) {
+			...
+			}
+			The required=false denotes that the query parameter can be optional, but the URL must have the same URI.
 
 Where do you need @EnableWebMVC? (answer)
 	The @EnableWebMvc annotation is required to enable Spring MVC when Java configuration is used to configure Spring MVC 
@@ -244,7 +275,8 @@ When do you need @ResponseStatus annotation in Spring MVC? (answer)
 	 public class BookNotFoundException extends RuntimeException {
 	     // ...
 	 }
-	If this Exception is thrown from any handler method then HTTP error code 404 with reason "No such Book" will be returned to the client.
+	If this Exception is thrown from any handler method then HTTP error code 404 with reason "No such Book" will be returned to
+	the client.
 
 Do you need Spring MVC in your classpath for developing RESTful Web Service? (answer)
 	This question is often asked to Java programmers with 1 to 2 years of experience in Spring. Short answer is Yes, you need 
@@ -256,11 +288,12 @@ Does REST work with transport layer security (TLS)? (answer)
 	TLS or Transport Layer Security is used for secure communication between client and server. It is the successor of SSL (Secure Socket Layer). Since HTTPS can work with both SSL and TLS, REST can also work with TLS.
 
 Is REST secure? What can you do to secure it? (answer)
-	This question is mostly asked with experienced Java programmers e.g. 2 to 5 years experience with both REST and Spring. Security is a broad term, it could mean security of message which is provided by encryption or access restriction which is provided using authentication and authorization. REST is normally not secure but you can secure it by using Spring security.
-	At the very least you can enable HTTP basic authentication by using HTTP in your Spring security configuration file. Similarly, you can expose your REST API using HTTPS if the underlying server supports HTTPS.
+	This question is mostly asked with experienced Java programmers e.g. 2 to 5 years experience with both REST and Spring. 
+	Security is a broad term, it could mean security of message which is provided by encryption or access restriction which is 
+	provided using authentication and authorization. REST is normally not secure but you can secure it by using Spring security.
+	At the very least you can enable HTTP basic authentication by using HTTP in your Spring security configuration file. 
+	Similarly, you can expose your REST API using HTTPS if the underlying server supports HTTPS.
 
-Read more: https://javarevisited.blogspot.com/2018/02/top-20-spring-rest-interview-questions-answers-java.html#ixzz5xOquMby4
-Read more: https://javarevisited.blogspot.com/2018/02/top-20-spring-rest-interview-questions-answers-java.html#ixzz5xOqqlbUf
 
 */
 public class Rest {

@@ -2,14 +2,17 @@
 	
 /*
 1) What is an exception?
-	Exception is an abnormal condition which occurs during the execution of a program and disrupts normal flow of the program. This exception must be handled properly. If it is not handled, program will be terminated abruptly.
+	Exception is an abnormal condition which occurs during the execution of a program and disrupts normal flow of the program. 
+	This exception must be handled properly. If it is not handled, program will be terminated abruptly.
 2) How the exceptions are handled in java? OR Explain exception handling mechanism in java?
 	Exceptions in java are handled using try, catch and finally blocks.
 	try block : The code or set of statements which are to be monitored for exception are kept in this block.
 	catch block : This block catches the exceptions occurred in the try block.
 	finally block : This block is always executed whether exception is occurred in the try block or not and occurred exception is caught in the catch block or not.
 3) What is the difference between error and exception in java?
-	Errors are mainly caused by the environment in which an application is running. For example, OutOfMemoryError happens when JVM runs out of memory. Where as exceptions are mainly caused by the application itself. For example, NullPointerException occurs when an application tries to access null object.
+	Errors are mainly caused by the environment in which an application is running. For example, OutOfMemoryError happens when 
+	JVM runs out of memory. Where as exceptions are mainly caused by the application itself. For example, NullPointerException 
+	occurs when an application tries to access null object.
 4) Can we keep other statements in between try, catch and finally blocks?
 	No. We shouldn’t write any other statements in between try, catch and finally blocks. They form a one unit.
 	try
@@ -27,11 +30,17 @@
 	    // This block is always executed
 	}
 5) Can we write only try block without catch and finally blocks?
-	No, It shows compilation error. The try block must be followed by either catch or finally block. You can remove either catch block or finally block but not both.
-6) There are three statements in a try block – statement1, statement2 and statement3. After that there is a catch block to catch the exceptions occurred in the try block. Assume that exception has occurred in statement2. Does statement3 get executed or not?
+	No, It shows compilation error. The try block must be followed by either catch or finally block. You can remove either 
+	catch block or finally block but not both.
+6) There are three statements in a try block – statement1, statement2 and statement3. After that there is a catch block to 
+	catch the exceptions occurred in the try block. Assume that exception has occurred in statement2. Does statement3 get 
+	executed or not?
 	No. Once a try block throws an exception, remaining statements will not be executed. control comes directly to catch block.
+	
 7) What is unreachable catch block error?
-	When you are keeping multiple catch blocks, the order of catch blocks must be from most specific to most general ones. i.e sub classes of Exception must come first and super classes later. If you keep super classes first and sub classes later, compiler will show unreachable catch block error.
+	When you are keeping multiple catch blocks, the order of catch blocks must be from most specific to most general ones. i.e 
+	sub classes of Exception must come first and super classes later. If you keep super classes first and sub classes later, 
+	compiler will show unreachable catch block error.
 	public class ExceptionHandling
 	{
 	    public static void main(String[] args)
@@ -56,12 +65,21 @@
 	}
 
 9) What are run time exceptions in java. Give example?
-	The exceptions which occur at run time are called as run time exceptions. These exceptions are unknown to compiler. All sub classes of java.lang.RunTimeException and java.lang.Error are run time exceptions. These exceptions are unchecked type of exceptions. For example, NumberFormatException, NullPointerException, ClassCastException, ArrayIndexOutOfBoundException, StackOverflowError etc.
+	The exceptions which occur at run time are called as run time exceptions. These exceptions are unknown to compiler. All 
+	sub classes of java.lang.RunTimeException and java.lang.Error are run time exceptions. These exceptions are unchecked type 
+	of exceptions. For example, NumberFormatException, NullPointerException, ClassCastException, ArrayIndexOutOfBoundException, 
+	StackOverflowError etc.
+	
 10) What is OutOfMemoryError in java?
 	OutOfMemoryError is the sub class of java.lang.Error which occurs when JVM runs out of memory.
+	
 11) what are checked and unchecked exceptions in java?
-	Checked exceptions are the exceptions which are known to compiler. These exceptions are checked at compile time only. Hence the name checked exceptions. These exceptions are also called compile time exceptions. Because, these exceptions will be known during compile time.
-	Unchecked exceptions are those exceptions which are not at all known to compiler. These exceptions occur only at run time. These exceptions are also called as run time exceptions. All sub classes of java.lang.RunTimeException and java.lang.Error are unchecked exceptions.
+	Checked exceptions are the exceptions which are known to compiler. These exceptions are checked at compile time only. Hence 
+	the name checked exceptions. These exceptions are also called compile time exceptions. Because, these exceptions will be 
+	known during compile time.
+	Unchecked exceptions are those exceptions which are not at all known to compiler. These exceptions occur only at run time. 
+	These exceptions are also called as run time exceptions. All sub classes of java.lang.RunTimeException and java.lang.Error 
+	are unchecked exceptions.
 
 	Checked Exceptions									Unchecked Exceptions
   1.They are known at compile time.						They are known at run time.
@@ -74,7 +92,7 @@
 	checked exceptions.	
 
 12) What is the difference between ClassNotFoundException and NoClassDefFoundError in java?
-	ClassNotFoundException	NoClassDefFoundError
+	ClassNotFoundException										NoClassDefFoundError
   1.It is an exception. It is of type java.lang.Exception.		It is an error. It is of type java.lang.Error.
   2.It occurs when an application tries to load a class at 		It occurs when java runtime system doesn’t find a class definition, which is present at compile time, but missing at run time.
   	run time which is not updated in the classpath.	
@@ -85,7 +103,8 @@
   	JAR files.	
   	
  13) Can we keep the statements after finally block If the control is returning from the finally block itself?
-	No, it gives unreachable code error. Because, control is returning from the finally block itself. Compiler will not see the statements after it. That’s why it shows unreachable code error.
+	No, it gives unreachable code error. Because, control is returning from the finally block itself. Compiler will not see 
+	the statements after it. That’s why it shows unreachable code error.
 
 14) Does finally block get executed If either try or catch blocks are returning the control?
 	Yes, finally block will be always executed no matter whether try or catch blocks are returning the control or not.
@@ -106,10 +125,12 @@
 	 
  
 16) Throwing An Exception :
-	We all know that Throwable class is super class for all types of errors and exceptions. An object to this Throwable class or it’s sub classes can be created in
-	two ways. First one is using an argument of catch block. In this way, Throwable object or object to it’s sub classes is implicitly created and thrown by java 
-	run time system. Second one is using new operator. In this way, Throwable object or object to it’s sub classes is explicitly created and thrown by the code.
-	An object to Throwable or to it’s sub classes can be explicitly created and thrown by using throw keyword. The syntax for using throw keyword is,
+	We all know that Throwable class is super class for all types of errors and exceptions. An object to this Throwable class 
+	or it’s sub classes can be created in two ways. First one is using an argument of catch block. In this way, Throwable 
+	object or object to it’s sub classes is implicitly created and thrown by java run time system. 
+	Second one is using new operator. In this way, Throwable object or object to it’s sub classes is explicitly created and 
+	thrown by the code. An object to Throwable or to it’s sub classes can be explicitly created and thrown by using throw 
+	keyword. The syntax for using throw keyword is,
 	throw InstanceOfThrowableType;
 	where, InstanceOfThrowableType must be an object of type Throwable or subclass of Throwable.
 	Such explicitly thrown exception must be handled some where in the program, otherwise program will be terminated.
@@ -135,8 +156,8 @@
 			}
 		}
 	}
-	It is not compulsory that explicitly thrown exception must be handled by immediately following try-catch block. It can be handled by any one of it’s enclosing
-	try-catch blocks.
+	It is not compulsory that explicitly thrown exception must be handled by immediately following try-catch block. It can be 
+	handled by any one of it’s enclosing try-catch blocks.
 	public class ExceptionHandling
 	{
 		public static void main(String[] args)
@@ -166,8 +187,9 @@
 		}
 	}
 	Re-throwing An Exception :
-	We all know that exceptions occurred in the try block are caught in catch block. Thus caught exceptions can be re-thrown using throw keyword. Re-thrown exception
-	must be handled some where in the program, otherwise program will terminate abruptly. For example,
+	We all know that exceptions occurred in the try block are caught in catch block. Thus caught exceptions can be re-thrown 
+	using throw keyword. Re-thrown exception must be handled some where in the program, otherwise program will terminate 
+	abruptly. For example,
 	public class ExceptionHandling
 	{
 		public static void main(String[] args)
@@ -199,11 +221,14 @@
 	}	
 	
 18) Why it is always recommended that clean up operations like closing the DB resources to keep inside a finally block?
-	Because finally block is always executed whether exceptions are raised in the try block or not and raised exceptions are caught in the catch block or not. By 
-	keeping the clean up operations in finally block, you will ensure that those operations will be always executed irrespective of whether exception is occurred or not.
+	Because finally block is always executed whether exceptions are raised in the try block or not and raised exceptions are 
+	caught in the catch block or not. By keeping the clean up operations in finally block, you will ensure that those 
+	operations will be always executed irrespective of whether exception is occurred or not.
 
 20) How do you create customized exceptions in java?
- 	In java, we can define our own exception classes as per our requirements. These exceptions are called user defined exceptions in java OR Customized exceptions. User defined exceptions must extend any one of the classes in the hierarchy of exceptions.
+ 	In java, we can define our own exception classes as per our requirements. These exceptions are called user defined 
+ 	exceptions in java OR Customized exceptions. User defined exceptions must extend any one of the classes in the hierarchy 
+ 	of exceptions.
 		Let’s see how to use user defined exceptions in java.
 		Consider the following example. This example throws an exception when user enters negative age.
 		public class ExceptionHandling
@@ -229,7 +254,10 @@
 		          }
 		    }
 		}
-		When user enters negative value in the above example, it throws an exception and prints exception description which user may not understand. So, Let’s make this program more user friendly. Modify above example so that user can understand why the exception has occurred. To do this, create one sub class to Exception class and override toString() method.
+		When user enters negative value in the above example, it throws an exception and prints exception description which 
+		user may not understand. So, Let’s make this program more user friendly. Modify above example so that user can 
+		understand why the exception has occurred. To do this, create one sub class to Exception class and override toString() 
+		method.
 		//Defining Our own exception by extending Exception class
 		class AgeIsNegativeException extends Exception
 		{
@@ -272,15 +300,20 @@
 		          }
 		    }
 		}
-		Now, this prints “Age can not be negative” when user enters a negative value. This makes the user understand easily why the error has occurred.
+		Now, this prints “Age can not be negative” when user enters a negative value. This makes the user understand easily 
+		why the error has occurred.
 
 21) What is ClassCastException in java?
 	ClassCastException is a RunTimeException which occurs when JVM unable to cast an object of one type to another type.
 			 
 22) What is the difference between throw, throws and throwable in java?
-	This is another most confusing java interview question asked to java freshers. Interviewer ask this type of questions to confuse the candidate because all three spell similar. But, all three serve different purpose in java. In this article, we will see the differences between throw, throws and Throwable in java.
+	This is another most confusing java interview question asked to java freshers. Interviewer ask this type of questions to 
+	confuse the candidate because all three spell similar. But, all three serve different purpose in java. In this article, we 
+	will see the differences between throw, throws and Throwable in java.
 	throw In Java :
-		throw is a keyword in java which is used to throw an exception manually. Using throw keyword, you can throw an exception from any method or block. But, that exception must be of type java.lang.Throwable class or it’s sub classes. Below example shows how to throw an exception using throw keyword.
+		throw is a keyword in java which is used to throw an exception manually. Using throw keyword, you can throw an 
+		exception from any method or block. But, that exception must be of type java.lang.Throwable class or it’s sub classes. 
+		Below example shows how to throw an exception using throw keyword.
 		class ThrowAndThrowsExample
 		{
 		    void method() throws Exception
@@ -291,7 +324,9 @@
 		    }
 		}
 	throws In Java :
-		throws is also a keyword in java which is used in the method signature to indicate that this method may throw mentioned exceptions. The caller to such methods must handle the mentioned exceptions either using try-catch blocks or using throws keyword. Below is the syntax for using throws keyword.
+		throws is also a keyword in java which is used in the method signature to indicate that this method may throw mentioned 
+		exceptions. The caller to such methods must handle the mentioned exceptions either using try-catch blocks or using 
+		throws keyword. Below is the syntax for using throws keyword.
 		return_type method_name(parameter_list) throws exception_list
 		{
 		     //some statements
@@ -337,17 +372,19 @@
 	StackOverflowError is an error which is thrown by the JVM when stack overflows.	
 	
 24) Can we override a super class method which is throwing an unchecked exception with checked exception in the sub class?
-	No. If a super class method is throwing an unchecked exception, then it can be overridden in the sub class with same exception or any other unchecked exceptions but can not be overridden with checked exceptions.
+	No. If a super class method is throwing an unchecked exception, then it can be overridden in the sub class with same 
+	exception or any other unchecked exceptions but can not be overridden with checked exceptions.
 
 26) Which class is the super class for all types of errors and exceptions in java?
 	java.lang.Throwable is the super class for all types of errors and exceptions in java.
-
-
-In an application, one exception throws many exceptions. i.e one exception causes another exception and that exception causes another exception thus forming chain of exceptions. It is better to know where the actual cause of the exception lies. This is possible with chained exceptions feature of the Java.
+	In an application, one exception throws many exceptions. i.e one exception causes another exception and that exception 
+	causes another exception thus forming chain of exceptions. It is better to know where the actual cause of the exception 
+	lies. This is possible with chained exceptions feature of the Java.
 
 26) Which class is the super class for all types of errors and exceptions in java?
 		 
-		Chained exceptions are introduced from JDK 1.4. To implement chained exceptions in java, two new constructors and two new methods are added in the Throwable class. They are,
+		Chained exceptions are introduced from JDK 1.4. To implement chained exceptions in java, two new constructors and two 
+		new methods are added in the Throwable class. They are,
 		Constructors Of Throwable class Which support chained exceptions in java :
 			1) Throwable(Throwable cause)    —-> where cause is the exception that causes the current exception.
 			2) Throwable(String msg, Throwable cause)   —-> where msg is the exception message and cause is the exception that causes the current exception.
@@ -386,7 +423,57 @@ In an application, one exception throws many exceptions. i.e one exception cause
 30) Give some examples to unchecked exceptions?
 	NullPointerException, ArrayIndexOutOfBoundsException, NumberFormatException		
 		
-		
+39. What kind of exceptions can be propagated using exception?
+	only unchecked, compiler error happens in case of checked exception propagation.
+	
+	 class TestExceptionPropagation2{  
+	  void m(){  
+	    throw new java.io.IOException("device error");//checked exception  
+	  }  
+	  void n(){  
+	    m();  
+	  }  
+	  void p(){  
+	   try{  
+	    n();  
+	   }catch(Exception e){System.out.println("exception handeled");}  
+	  }  
+	  public static void main(String args[]){  
+	   TestExceptionPropagation2 obj=new TestExceptionPropagation2();  
+	   obj.p();  
+	   System.out.println("normal flow");  
+	  }  
+	}  
+	Output:Compile Time Error
+ 
+38. What kind of exceptions can be declared using throws keyword?
+	only checked exceptions. because :
+		unchecked Exception: under your control so correct your code.
+		error: beyond your control e.g. you are unable to do anything if there occurs VirtualMachineError or StackOverflowError.
+	Advantage of Java throws keyword
+		Now Checked Exception can be propagated (forwarded in call stack).
+		It provides information to the caller of the method about the exception.
+	
+	Let's see the example of java throws clause which describes that checked exceptions can be propagated by throws keyword.
+	import java.io.IOException;  
+	class Testthrows1{  
+	  void m()throws IOException{  
+	    throw new IOException("device error");//checked exception  
+	  }  
+	  void n()throws IOException{  
+	    m();  
+	  }  
+	  void p(){  
+	   try{  
+	    n();  
+	   }catch(Exception e){System.out.println("exception handled");}  
+	  }  
+	  public static void main(String args[]){  
+	   Testthrows1 obj=new Testthrows1();  
+	   obj.p();  
+	   System.out.println("normal flow...");  
+	  }  
+	}  
 			 
  */
 	
